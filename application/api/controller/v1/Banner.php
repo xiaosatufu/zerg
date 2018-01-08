@@ -59,22 +59,22 @@ class Banner
 //        } else {
 //
 //        }
-        (new IDMustBePositiveInt())->goCheck();
+        (new IDMustBePositiveInt())->batch()->goCheck();
         /*
-        try{
+            try{
+                $banner = BannerModel::getBannerByID($id);
+            }
+            catch (Exception $ex) {
+                $err = [
+                    'error_code'=>10001,
+                    'msg'=>$ex->getMessage()
+                ];
+                return json($err,400);
+            }
+            return $banner;
+            */
             $banner = BannerModel::getBannerByID($id);
-        }
-        catch (Exception $ex) {
-            $err = [
-                'error_code'=>10001,
-                'msg'=>$ex->getMessage()
-            ];
-            return json($err,400);
-        }
-        return $banner;
-        */
-        $banner = BannerModel::getBannerByID($id);
-        if (!$banner) {
+            if (!$banner) {
 //            throw new BannerMissException();
             throw new Exception('内部错误');
         }
